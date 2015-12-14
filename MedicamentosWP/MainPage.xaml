@@ -1,0 +1,33 @@
+﻿<Page
+    x:Class="MedicamentosWP.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MedicamentosWP"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <TextBlock x:Name="MainTitle"
+                   Text="Medicamentos WP 8.1"
+                   FontSize="28"></TextBlock>
+        <ScrollViewer>
+            <ListView x:Name="lst_Medicamentos"
+                      ItemsSource="{Binding Medicamentos}"
+                      SelectedItem="{Binding MedicamentoSelecionado, Mode=TwoWay}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="{Binding Nome}"></TextBlock>
+                            <TextBlock Text="{Binding DataHoraInicio}"></TextBlock>
+                            <TextBlock Text="{Binding Dosagem}"></TextBlock>
+                            <TextBlock Text="{Binding Veiculo}"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollViewer>
+
+    </Grid>
+</Page>
