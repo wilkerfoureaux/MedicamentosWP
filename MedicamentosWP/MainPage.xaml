@@ -9,10 +9,16 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
         <TextBlock x:Name="MainTitle"
                    Text="Medicamentos WP 8.1"
-                   FontSize="28"></TextBlock>
-        <ScrollViewer>
+                   FontSize="28"
+                   Grid.Row="0"></TextBlock>
+        <ScrollViewer Grid.Row="1">
             <ListView x:Name="lst_Medicamentos"
                       ItemsSource="{Binding Medicamentos}"
                       SelectedItem="{Binding MedicamentoSelecionado, Mode=TwoWay}">
@@ -28,6 +34,21 @@
                 </ListView.ItemTemplate>
             </ListView>
         </ScrollViewer>
-
+        <StackPanel Grid.Row="2"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Center">
+            <AppBarButton x:Name="btn_Add"
+                      Icon="Add"
+                      Label="Adicionar Medicamento" Click="btn_Add_Click"></AppBarButton>
+            <AppBarButton x:Name="btn_Update"
+                      Icon="Edit"
+                      Label="Alterar Medicamento"></AppBarButton>
+            <AppBarButton x:Name="btn_Load"
+                      Icon="List"
+                      Label="Listar Todos Medicamentos"></AppBarButton>
+            <AppBarButton x:Name="btn_Settings"
+                      Icon="Setting"
+                      Label="Opções"></AppBarButton>
+        </StackPanel>
     </Grid>
 </Page>

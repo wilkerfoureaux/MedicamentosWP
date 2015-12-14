@@ -1,5 +1,6 @@
 ﻿using MedicamentosWP.Helpers;
 using MedicamentosWP.Models;
+using MedicamentosWP.Views;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -54,6 +55,11 @@ namespace MedicamentosWP
             // Windows.Phone.UI.Input.HardwareButtons.BackPressed event.
             // If you are using the NavigationHelper provided by some templates,
             // this event is handled for you.
+        }
+
+        private void btn_Add_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(UpdateDelete_Medicamentos),lst_Medicamentos.SelectedItem);
         }
     }
 }
