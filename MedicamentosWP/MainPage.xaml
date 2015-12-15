@@ -32,7 +32,7 @@
                             <TextBlock Text="{Binding DataHoraProxima}"></TextBlock>
                             <TextBlock Text="{Binding DataHoraTermino}"></TextBlock>
                             <TextBlock Text="{Binding Dosagem}"></TextBlock>
-                            <TextBlock Text="{Binding Veiculo}"></TextBlock>
+                            <TextBlock Text="{Binding Dose}"></TextBlock>
                             <AppBarButton Label="Ingerido!"
                                           Icon="Accept"></AppBarButton>
                         </StackPanel>

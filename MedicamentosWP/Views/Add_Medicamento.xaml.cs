@@ -39,10 +39,17 @@ namespace MedicamentosWP.Views
 
             _medicamentosVM = new MedicamentosVM(_data);
 
+            DosesVM dosesVM = new DosesVM();
+
+            cbx_Dose.DisplayMemberPath = "value";
+            cbx_Dose.ItemsSource = dosesVM.Doses();
+
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
         }
+
+
 
         /// <summary>
         /// Gets the <see cref="NavigationHelper"/> associated with this <see cref="Page"/>.
@@ -122,7 +129,7 @@ namespace MedicamentosWP.Views
                 Nome = tbx_Nome.Text,
                 DataHoraInicio = dtp_DataInicio.Date.Date.Add(dtp_HoraInicio.Time),
                 Dosagem = Double.Parse(tbx_Dosagem.Text),
-                Veiculo = cbx_Veiculo.SelectedIndex
+                Dose = cbx_Dose.SelectedIndex
             };
 
             _medicamentosVM.AddMedicamento(medicamento);

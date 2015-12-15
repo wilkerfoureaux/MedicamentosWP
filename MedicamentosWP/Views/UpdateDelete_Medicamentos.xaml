@@ -38,21 +38,23 @@
               Margin="19,9.5,19,0">
             <StackPanel>
                 <TextBox x:Name="tbx_Nome"
-                     Header="Nome"
-                     Text="{Binding Nome}">
-                </TextBox>
+                         Header="Nome"
+                         Text="{Binding Nome}" />
+                
                 <DatePicker x:Name="dtp_DataInicio"
-                     Header="Data de Início"
-                     Date="{Binding DataHoraInicio}">
-                </DatePicker>
+                            Header="Data de Início"
+                            Date="{Binding DataHoraInicio}" />
+                
+                <TimePicker x:Name="tp_HoraInicio"
+                            Header="Hora de Início"
+                            Time="{Binding DataHoraInicio}" />
+                
                 <TextBox x:Name="tbx_Dosagem"
-                     Header="Dosagem"
-                     Text="{Binding Dosagem}">
-                </TextBox>
-                <TextBox x:Name="tbx_Veiculo"
-                     Header="Veiculo"
-                     Text="{Binding Veiculo}">
-                </TextBox>
+                         Header="Dosagem"
+                         Text="{Binding Dosagem}" />
+                
+                <ComboBox x:Name="cbx_Dose"
+                         Header="Dose" />
             </StackPanel>
         </Grid>
         <StackPanel Grid.Row="2"

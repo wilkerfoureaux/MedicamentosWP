@@ -40,7 +40,6 @@
             <StackPanel>
                 <TextBox x:Name="tbx_Nome"
                          Header="Nome"
-                         Text="{Binding Nome}"
                          PlaceholderText="ex. Paracetamol">
                 </TextBox>
                 <DatePicker x:Name="dtp_DataInicio"
@@ -51,15 +50,11 @@
                 </TimePicker>
                 <TextBox x:Name="tbx_Dosagem"
                          Header="Dosagem"
-                         Text="{Binding Dosagem}"
-                         PlaceholderText="ex. 10"
+                         PlaceholderText="ex. 10 hs"
                          InputScope="Number">
                 </TextBox>
-                <ComboBox x:Name="cbx_Veiculo"
-                         Header="Veiculo"
-                         PlaceholderText="ex. Gotas">
-                    <ComboBoxItem Content="Gotas"></ComboBoxItem>
-                    <ComboBoxItem Content="Comprimidos"></ComboBoxItem>
+                <ComboBox x:Name="cbx_Dose"
+                          Header="Dose">
                 </ComboBox>
             </StackPanel>
 

@@ -13,7 +13,7 @@ namespace MedicamentosWP.Models
         public string Nome { get; set; }
         public string Marca { get; set; }
         public int Tipo { get; set; }
-        public int Veiculo { get; set; }
+        public int Dose { get; set; }
         public double Dosagem { get; set; }
         // public double Posologia { get; set; }
         public DateTime DataHoraInicio { get; set; }
@@ -27,39 +27,16 @@ namespace MedicamentosWP.Models
             //construtor vazio
         }
 
-        public Medicamento(string Nome, DateTime Inicio, double Dosagem, int Veiculo)
+        public Medicamento(string Nome, DateTime Inicio, double Dosagem, int Dose)
         {
             this.Nome = Nome;
             this.DataHoraInicio = Inicio;
             this.DataHoraProxima = Inicio;
-            this.DataHoraUsado = Inicio;
+            this.DataHoraUsado = DateTime.MinValue;
             this.DataHoraTermino = DateTime.MaxValue;
             this.Dosagem = Dosagem;
-            this.Veiculo = Veiculo;
+            this.Dose = Dose;
         }
 
-    }
-
-    enum Tipo
-    {
-        Fitoterapico,
-        Alopatico,
-        Homeopatico,
-        Similar,
-        Generico,
-        Referencia,
-        Manipulado
-    }
-
-    enum Veiculo
-    {
-        Capsula,
-        Comprimido,
-        Gotas,
-        Unica,
-        IntraVenoso,
-        IntraMuscular,
-        Inalavel,
-        Topico
     }
 }

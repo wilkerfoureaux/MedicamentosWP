@@ -40,6 +40,11 @@ namespace MedicamentosWP.Views
 
             _medicamentosVM = new MedicamentosVM(_data);
 
+            DosesVM dosesVM = new DosesVM();
+
+            cbx_Dose.DisplayMemberPath = "value";
+            cbx_Dose.ItemsSource = dosesVM.Doses();
+
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
@@ -113,6 +118,8 @@ namespace MedicamentosWP.Views
             var medicamento = (Medicamento)e.Parameter;
 
             this.Title.Text = medicamento.Nome;
+
+            cbx_Dose.SelectedIndex = medicamento.Dose - 1;
         }
 
 
@@ -130,7 +137,8 @@ namespace MedicamentosWP.Views
             medicamento.Nome = tbx_Nome.Text;
             medicamento.DataHoraInicio = dtp_DataInicio.Date.DateTime;
             medicamento.Dosagem = Double.Parse(tbx_Dosagem.Text);
-            medicamento.Veiculo = int.Parse(tbx_Veiculo.Text);            
+            DosesVM dvm = (DosesVM) cbx_Dose.SelectedItem;
+            medicamento.Dose = dvm.key;            
 
             _medicamentosVM.UpdateMedicamento(medicamento);
 
