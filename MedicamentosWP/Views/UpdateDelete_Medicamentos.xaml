@@ -36,26 +36,45 @@
         <Grid Grid.Row="1"
               x:Name="ContentRoot"
               Margin="19,9.5,19,0">
-            <StackPanel>
-                <TextBox x:Name="tbx_Nome"
+            <ScrollViewer>
+                <StackPanel>
+                    <TextBox x:Name="tbx_Nome"
                          Header="Nome"
                          Text="{Binding Nome}" />
-                
-                <DatePicker x:Name="dtp_DataInicio"
+
+                    <TextBox x:Name="tbx_Marca"
+                         Header="Marca"
+                         Text="{Binding Marca}"
+                         PlaceholderText="ex. Medley "/>
+
+                    <ComboBox x:Name="cbx_Tipo"
+                         Header="Tipo" />
+
+                    <DatePicker x:Name="dtp_DataInicio"
                             Header="Data de Início"
                             Date="{Binding DataHoraInicio}" />
-                
-                <TimePicker x:Name="tp_HoraInicio"
+
+                    <TimePicker x:Name="tp_HoraInicio"
                             Header="Hora de Início"
                             Time="{Binding DataHoraInicio}" />
-                
-                <TextBox x:Name="tbx_Dosagem"
+
+                    <TextBox x:Name="tbx_Dosagem"
                          Header="Dosagem"
-                         Text="{Binding Dosagem}" />
-                
-                <ComboBox x:Name="cbx_Dose"
+                         Text="{Binding Dosagem}"
+                         InputScope="Number" />
+
+                    <ComboBox x:Name="cbx_Dose"
                          Header="Dose" />
-            </StackPanel>
+
+                    <TextBox x:Name="tbx_Observacao"
+                         TextWrapping="Wrap"
+                         AcceptsReturn="True"
+                         Header="Observações"
+                         Height="200"
+                         PlaceholderText="ex. Quebrar comprimido na metade; Somente com água"/>
+
+                </StackPanel>
+            </ScrollViewer>
         </Grid>
         <StackPanel Grid.Row="2"
                     Orientation="Horizontal"

@@ -40,10 +40,17 @@ namespace MedicamentosWP.Views
 
             _medicamentosVM = new MedicamentosVM(_data);
 
+            // ComboBox de Doses
             DosesVM dosesVM = new DosesVM();
 
             cbx_Dose.DisplayMemberPath = "value";
             cbx_Dose.ItemsSource = dosesVM.Doses();
+
+            // ComboBox de Tipos
+            TipoMedicamentoVM tipoMedicamentoVM = new TipoMedicamentoVM();
+
+            cbx_Tipo.DisplayMemberPath = "value";
+            cbx_Tipo.ItemsSource = tipoMedicamentoVM.TiposMedicamento();
 
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
@@ -135,10 +142,17 @@ namespace MedicamentosWP.Views
             Medicamento medicamento = (Medicamento)DataContext;
 
             medicamento.Nome = tbx_Nome.Text;
-            medicamento.DataHoraInicio = dtp_DataInicio.Date.DateTime;
+            medicamento.Marca = tbx_Marca.Text;
+            TipoMedicamentoVM tmm = (TipoMedicamentoVM)cbx_Tipo.SelectedItem;
+            medicamento.Tipo = tmm.key;
             medicamento.Dosagem = Double.Parse(tbx_Dosagem.Text);
             DosesVM dvm = (DosesVM) cbx_Dose.SelectedItem;
-            medicamento.Dose = dvm.key;            
+            medicamento.Dose = dvm.key;
+            medicamento.DataHoraInicio = dtp_DataInicio.Date.DateTime;
+            medicamento.DataHoraProxima = dtp_DataInicio.Date.DateTime;
+            medicamento.DataHoraTermino = dtp_DataInicio.Date.DateTime;
+            medicamento.DataHoraUsado = dtp_DataInicio.Date.DateTime;
+            medicamento.Observacao = tbx_Observacao.Text;
 
             _medicamentosVM.UpdateMedicamento(medicamento);
 
