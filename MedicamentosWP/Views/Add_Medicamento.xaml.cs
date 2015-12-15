@@ -9,7 +9,6 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Graphics.Display;
-using Windows.UI.Popups;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -26,7 +25,7 @@ namespace MedicamentosWP.Views
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class UpdateDelete_Medicamentos : Page
+    public sealed partial class Add_Medicamento : Page
     {
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
@@ -34,7 +33,7 @@ namespace MedicamentosWP.Views
         private IDataRepository _data = new MedicamentosDataRepository();
         private MedicamentosVM _medicamentosVM;
 
-        public UpdateDelete_Medicamentos()
+        public Add_Medicamento()
         {
             this.InitializeComponent();
 
@@ -107,14 +106,7 @@ namespace MedicamentosWP.Views
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             this.navigationHelper.OnNavigatedTo(e);
-
-            this.DataContext = (Medicamento)e.Parameter;
-
-            var medicamento = (Medicamento)e.Parameter;
-
-            this.Title.Text = medicamento.Nome;
         }
-
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
@@ -125,24 +117,22 @@ namespace MedicamentosWP.Views
 
         private void btn_Save_Click(object sender, RoutedEventArgs e)
         {
-            Medicamento medicamento = (Medicamento)DataContext;
+            Medicamento medicamento = new Medicamento
+            {
+                Nome = tbx_Nome.Text,
+                DataHoraInicio = dtp_DataInicio.Date.Date.Add(dtp_HoraInicio.Time),
+                Dosagem = Double.Parse(tbx_Dosagem.Text),
+                Veiculo = cbx_Veiculo.SelectedIndex
+            };
 
-            medicamento.Nome = tbx_Nome.Text;
-            medicamento.DataHoraInicio = dtp_DataInicio.Date.DateTime;
-            medicamento.Dosagem = Double.Parse(tbx_Dosagem.Text);
-            medicamento.Veiculo = int.Parse(tbx_Veiculo.Text);            
-
-            _medicamentosVM.UpdateMedicamento(medicamento);
+            _medicamentosVM.AddMedicamento(medicamento);
 
             // lista o medicamento assim que salva
             Frame.Navigate(typeof(MainPage));
         }
 
-        private void btn_Delete_Click(object sender, RoutedEventArgs e)
+        private void btn_Cancel_Click(object sender, RoutedEventArgs e)
         {
-            _medicamentosVM.DeleteMedicamento((Medicamento)DataContext);
-            
-            // lista o medicamento assim que salva
             Frame.Navigate(typeof(MainPage));
         }
     }

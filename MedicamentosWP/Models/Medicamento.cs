@@ -31,9 +31,13 @@ namespace MedicamentosWP.Models
         {
             this.Nome = Nome;
             this.DataHoraInicio = Inicio;
+            this.DataHoraProxima = Inicio;
+            this.DataHoraUsado = Inicio;
+            this.DataHoraTermino = DateTime.MaxValue;
             this.Dosagem = Dosagem;
             this.Veiculo = Veiculo;
         }
+
     }
 
     enum Tipo

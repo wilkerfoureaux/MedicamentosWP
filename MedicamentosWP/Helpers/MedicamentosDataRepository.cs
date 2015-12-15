@@ -28,32 +28,8 @@ namespace MedicamentosWP.Helpers
             {
                 db.CreateTable<Medicamento>();
 
-                if (db.ExecuteScalar<int>(
-                    "select count(1) from Medicamento" ) == 0)
-                {
+                Load();
 
-                    db.RunInTransaction(() =>
-                    {
-                        db.Insert(new Medicamento()
-                        {
-                            Nome = "Paracetamol",
-                            DataHoraInicio = DateTime.Now,
-                            Dosagem = 10,
-                            Veiculo = 1
-                        });
-                        db.Insert(new Medicamento()
-                        {
-                            Nome = "Neosaldina",
-                            DataHoraInicio = DateTime.Now,
-                            Dosagem = 9.99,
-                            Veiculo = 2
-                        });
-                    });
-                }
-                else
-                {
-                    Load();
-                }
             }
         }
 
@@ -75,7 +51,7 @@ namespace MedicamentosWP.Helpers
 
             _medicamentos = new ObservableCollection<Medicamento>(
                 await asyncConnection.QueryAsync<Medicamento>(
-                    "select * from Medicamento"
+                    "select * from Medicamento order by DataHoraProxima"
                     ));
             return _medicamentos;
         }
@@ -95,7 +71,7 @@ namespace MedicamentosWP.Helpers
             // throw new NotImplementedException();
 
             var oldMedicamento = _medicamentos.FirstOrDefault(
-                m => m.Id == medicamento.Id );
+                m => m.Id == medicamento.Id);
 
             if (oldMedicamento == null)
             {

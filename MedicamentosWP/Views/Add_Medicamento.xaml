@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="MedicamentosWP.Views.UpdateDelete_Medicamentos"
+    x:Class="MedicamentosWP.Views.Add_Medicamento"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:MedicamentosWP.Views"
@@ -24,9 +24,10 @@
 
         <!-- Title Panel -->
         <StackPanel Grid.Row="0" Margin="19,0,0,0">
-            <TextBlock Text="Medicamentos WP" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
-            <TextBlock x:Name="Title"
-                       Text="medicamento"
+            <TextBlock Text="Medicamentos WP"
+                       Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
+            <TextBlock Text="novo medicamento"
+                       FontSize="42"
                        Margin="0,-6.5,0,26.5"
                        Style="{ThemeResource HeaderTextBlockStyle}" 
                        CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
@@ -38,22 +39,30 @@
               Margin="19,9.5,19,0">
             <StackPanel>
                 <TextBox x:Name="tbx_Nome"
-                     Header="Nome"
-                     Text="{Binding Nome}">
+                         Header="Nome"
+                         Text="{Binding Nome}"
+                         PlaceholderText="ex. Paracetamol">
                 </TextBox>
                 <DatePicker x:Name="dtp_DataInicio"
-                     Header="Data de Início"
-                     Date="{Binding DataHoraInicio}">
+                            Header="Data de Início">
                 </DatePicker>
+                <TimePicker x:Name="dtp_HoraInicio"
+                            Header="Hora de Início">
+                </TimePicker>
                 <TextBox x:Name="tbx_Dosagem"
-                     Header="Dosagem"
-                     Text="{Binding Dosagem}">
+                         Header="Dosagem"
+                         Text="{Binding Dosagem}"
+                         PlaceholderText="ex. 10"
+                         InputScope="Number">
                 </TextBox>
-                <TextBox x:Name="tbx_Veiculo"
-                     Header="Veiculo"
-                     Text="{Binding Veiculo}">
-                </TextBox>
+                <ComboBox x:Name="cbx_Veiculo"
+                         Header="Veiculo"
+                         PlaceholderText="ex. Gotas">
+                    <ComboBoxItem Content="Gotas"></ComboBoxItem>
+                    <ComboBoxItem Content="Comprimidos"></ComboBoxItem>
+                </ComboBox>
             </StackPanel>
+
         </Grid>
         <StackPanel Grid.Row="2"
                     Orientation="Horizontal"
@@ -63,10 +72,7 @@
                       Label="Salvar Medicamento" Click="btn_Save_Click"></AppBarButton>
             <AppBarButton x:Name="btn_Cancel"
                       Icon="Undo"
-                      Label="Cancelar"></AppBarButton>
-            <AppBarButton x:Name="btn_Delete"
-                      Icon="Delete"
-                      Label="Deletar Medicamento" Click="btn_Delete_Click"></AppBarButton>
+                      Label="Cancelar" Click="btn_Cancel_Click"></AppBarButton>
         </StackPanel>
     </Grid>
 </Page>

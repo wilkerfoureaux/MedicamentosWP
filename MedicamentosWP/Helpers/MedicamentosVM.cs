@@ -76,6 +76,24 @@ namespace MedicamentosWP.Helpers
             RaisePropertyChanged("Medicamentos");
         }
 
+        internal void UpdateMedicamento(Medicamento medicamento)
+        {
+            _data.Update(medicamento);
+            RaisePropertyChanged("Medicamentos");
+        }
+
+        internal void ProximaHora(Medicamento medicamento)
+        {
+            medicamento.DataHoraProxima = medicamento.DataHoraUsado.AddHours(medicamento.Dosagem);
+            UpdateMedicamento(medicamento);
+        }
+
+        internal void Termino(Medicamento medicamento, DateTime termino)
+        {
+            medicamento.DataHoraTermino = termino;
+            UpdateMedicamento(medicamento);
+        }
+
         // Interface
         public event PropertyChangedEventHandler PropertyChanged;
         private void RaisePropertyChanged([CallerMemberName] string caller = "")

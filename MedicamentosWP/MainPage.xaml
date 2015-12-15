@@ -18,7 +18,8 @@
                    Text="Medicamentos WP 8.1"
                    FontSize="28"
                    Grid.Row="0"></TextBlock>
-        <ScrollViewer Grid.Row="1">
+        <ScrollViewer Grid.Row="1"
+                      Margin="6">
             <ListView x:Name="lst_Medicamentos"
                       ItemsSource="{Binding Medicamentos}"
                       SelectedItem="{Binding MedicamentoSelecionado, Mode=TwoWay}">
@@ -27,8 +28,13 @@
                         <StackPanel>
                             <TextBlock Text="{Binding Nome}"></TextBlock>
                             <TextBlock Text="{Binding DataHoraInicio}"></TextBlock>
+                            <TextBlock Text="{Binding DataHoraUsado}"></TextBlock>
+                            <TextBlock Text="{Binding DataHoraProxima}"></TextBlock>
+                            <TextBlock Text="{Binding DataHoraTermino}"></TextBlock>
                             <TextBlock Text="{Binding Dosagem}"></TextBlock>
                             <TextBlock Text="{Binding Veiculo}"></TextBlock>
+                            <AppBarButton Label="Ingerido!"
+                                          Icon="Accept"></AppBarButton>
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
@@ -42,7 +48,10 @@
                       Label="Adicionar Medicamento" Click="btn_Add_Click"></AppBarButton>
             <AppBarButton x:Name="btn_Update"
                       Icon="Edit"
-                      Label="Alterar Medicamento"></AppBarButton>
+                      Label="Alterar Medicamento" Click="btn_Update_Click"></AppBarButton>
+            <AppBarButton x:Name="btn_Finalize"
+                      Icon="Download"
+                      Label="Finalizar Medicamento" Click="btn_Finalize_Click"></AppBarButton>
             <AppBarButton x:Name="btn_Load"
                       Icon="List"
                       Label="Listar Todos Medicamentos"></AppBarButton>
