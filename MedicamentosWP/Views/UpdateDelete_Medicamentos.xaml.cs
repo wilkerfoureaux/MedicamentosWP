@@ -39,6 +39,7 @@ namespace MedicamentosWP.Views
             this.InitializeComponent();
 
             _medicamentosVM = new MedicamentosVM(_data);
+            _medicamentosVM.Initialize();
 
             // ComboBox de Doses
             DosesVM dosesVM = new DosesVM();
@@ -127,6 +128,7 @@ namespace MedicamentosWP.Views
             this.Title.Text = medicamento.Nome;
 
             cbx_Dose.SelectedIndex = medicamento.Dose - 1;
+            cbx_Tipo.SelectedIndex = medicamento.Tipo - 1;
         }
 
 
@@ -149,9 +151,9 @@ namespace MedicamentosWP.Views
             DosesVM dvm = (DosesVM) cbx_Dose.SelectedItem;
             medicamento.Dose = dvm.key;
             medicamento.DataHoraInicio = dtp_DataInicio.Date.DateTime;
-            medicamento.DataHoraProxima = dtp_DataInicio.Date.DateTime;
-            medicamento.DataHoraTermino = dtp_DataInicio.Date.DateTime;
-            medicamento.DataHoraUsado = dtp_DataInicio.Date.DateTime;
+            medicamento.DataHoraProxima = dtp_DataProximo.Date.DateTime;
+            medicamento.DataHoraTermino = dtp_DataTermino.Date.DateTime;
+            medicamento.DataHoraUsado = dtp_DataUsado.Date.DateTime;
             medicamento.Observacao = tbx_Observacao.Text;
 
             _medicamentosVM.UpdateMedicamento(medicamento);
@@ -165,6 +167,11 @@ namespace MedicamentosWP.Views
             _medicamentosVM.DeleteMedicamento((Medicamento)DataContext);
             
             // lista o medicamento assim que salva
+            Frame.Navigate(typeof(MainPage));
+        }
+
+        private void btn_Cancel_Click(object sender, RoutedEventArgs e)
+        {
             Frame.Navigate(typeof(MainPage));
         }
     }

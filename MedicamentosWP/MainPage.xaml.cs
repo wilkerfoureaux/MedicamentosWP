@@ -8,6 +8,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -56,9 +57,6 @@ namespace MedicamentosWP
             // Windows.Phone.UI.Input.HardwareButtons.BackPressed event.
             // If you are using the NavigationHelper provided by some templates,
             // this event is handled for you.
-            base.OnNavigatedTo(e);
-            DataContext = null;
-            DataContext = _medicamentosVM;
         }
 
         private void btn_Add_Click(object sender, RoutedEventArgs e)
@@ -97,6 +95,9 @@ namespace MedicamentosWP
             {
                 ShowMessage("Nenhum Medicamento Selecionado!");
             }
+
+            DataContext = null;
+            DataContext = _medicamentosVM;
         }
     }
 }

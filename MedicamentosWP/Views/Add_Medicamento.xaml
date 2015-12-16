@@ -1,73 +1,67 @@
-﻿<Page
-    x:Class="MedicamentosWP.Views.Add_Medicamento"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:MedicamentosWP.Views"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+﻿<Page x:Class="MedicamentosWP.Views.Add_Medicamento"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="using:MedicamentosWP.Views"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+      mc:Ignorable="d">
 
     <Grid x:Name="LayoutRoot">
 
         <Grid.ChildrenTransitions>
             <TransitionCollection>
-                <EntranceThemeTransition/>
+                <EntranceThemeTransition />
             </TransitionCollection>
         </Grid.ChildrenTransitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <!-- Title Panel -->
+        <!--  Title Panel  -->
         <StackPanel Grid.Row="0" Margin="19,0,0,0">
-            <TextBlock Text="Medicamentos WP"
-                       Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
-            <TextBlock Text="novo medicamento"
+            <TextBlock Margin="0,12,0,0"
+                       Style="{ThemeResource TitleTextBlockStyle}"
+                       Text="Medicamentos WP" />
+            <TextBlock Margin="0,-6.5,0,26.5"
+                       CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"
                        FontSize="42"
-                       Margin="0,-6.5,0,26.5"
-                       Style="{ThemeResource HeaderTextBlockStyle}" 
-                       CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
+                       Style="{ThemeResource HeaderTextBlockStyle}"
+                       Text="novo medicamento" />
         </StackPanel>
 
-        <!--TODO: Content should be placed within the following grid-->
-        <Grid Grid.Row="1"
-              x:Name="ContentRoot"
+        <!--  TODO: Content should be placed within the following grid  -->
+        <Grid x:Name="ContentRoot"
+              Grid.Row="1"
               Margin="19,9.5,19,0">
             <StackPanel>
                 <TextBox x:Name="tbx_Nome"
                          Header="Nome"
-                         PlaceholderText="ex. Paracetamol">
-                </TextBox>
-                <DatePicker x:Name="dtp_DataInicio"
-                            Header="Data de Início">
-                </DatePicker>
-                <TimePicker x:Name="dtp_HoraInicio"
-                            Header="Hora de Início">
-                </TimePicker>
+                         PlaceholderText="ex. Paracetamol" />
+                <DatePicker x:Name="dtp_DataInicio" Header="Data de Início" />
+                <TimePicker x:Name="dtp_HoraInicio" Header="Hora de Início" />
                 <TextBox x:Name="tbx_Dosagem"
                          Header="Dosagem"
-                         PlaceholderText="ex. 10 hs"
-                         InputScope="Number">
-                </TextBox>
-                <ComboBox x:Name="cbx_Dose"
-                          Header="Dose">
-                </ComboBox>
+                         InputScope="Number"
+                         PlaceholderText="ex. 10 hs" />
+                <ComboBox x:Name="cbx_Dose" Header="Dose" />
             </StackPanel>
 
         </Grid>
         <StackPanel Grid.Row="2"
-                    Orientation="Horizontal"
-                    HorizontalAlignment="Center">
+                    HorizontalAlignment="Center"
+                    Orientation="Horizontal">
             <AppBarButton x:Name="btn_Save"
-                      Icon="Save"
-                      Label="Salvar Medicamento" Click="btn_Save_Click"></AppBarButton>
+                          Click="btn_Save_Click"
+                          Icon="Save"
+                          Label="Salvar Medicamento" />
             <AppBarButton x:Name="btn_Cancel"
-                      Icon="Undo"
-                      Label="Cancelar" Click="btn_Cancel_Click"></AppBarButton>
+                          Click="btn_Cancel_Click"
+                          Icon="Undo"
+                          Label="Cancelar" />
         </StackPanel>
     </Grid>
 </Page>

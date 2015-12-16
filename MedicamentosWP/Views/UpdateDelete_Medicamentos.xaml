@@ -1,93 +1,156 @@
-﻿<Page
-    x:Class="MedicamentosWP.Views.UpdateDelete_Medicamentos"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:MedicamentosWP.Views"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+﻿<Page x:Class="MedicamentosWP.Views.UpdateDelete_Medicamentos"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="using:MedicamentosWP.Views"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+      mc:Ignorable="d">
 
     <Grid x:Name="LayoutRoot">
 
         <Grid.ChildrenTransitions>
             <TransitionCollection>
-                <EntranceThemeTransition/>
+                <EntranceThemeTransition />
             </TransitionCollection>
         </Grid.ChildrenTransitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <!-- Title Panel -->
-        <StackPanel Grid.Row="0" Margin="19,0,0,0">
-            <TextBlock Text="Medicamentos WP" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
+        <!--  Title Panel  -->
+        <StackPanel Grid.Row="0" Margin="12,0">
+            <TextBlock Margin="0,12,0,0"
+                       Style="{ThemeResource TitleTextBlockStyle}"
+                       Text="Medicamentos WP" />
             <TextBlock x:Name="Title"
-                       Text="medicamento"
                        Margin="0,-6.5,0,26.5"
-                       Style="{ThemeResource HeaderTextBlockStyle}" 
-                       CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
+                       CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"
+                       Style="{ThemeResource HeaderTextBlockStyle}"
+                       Text="medicamento" />
         </StackPanel>
 
-        <!--TODO: Content should be placed within the following grid-->
-        <Grid Grid.Row="1"
-              x:Name="ContentRoot"
-              Margin="19,9.5,19,0">
+        <!--  TODO: Content should be placed within the following grid  -->
+        <Grid x:Name="ContentRoot"
+              Grid.Row="1"
+              Margin="12,0">
             <ScrollViewer>
                 <StackPanel>
                     <TextBox x:Name="tbx_Nome"
-                         Header="Nome"
-                         Text="{Binding Nome}" />
+                             Header="Nome"
+                             Text="{Binding Nome}" />
 
                     <TextBox x:Name="tbx_Marca"
-                         Header="Marca"
-                         Text="{Binding Marca}"
-                         PlaceholderText="ex. Medley "/>
+                             Header="Marca"
+                             PlaceholderText="ex. Medley "
+                             Text="{Binding Marca}" />
 
-                    <ComboBox x:Name="cbx_Tipo"
-                         Header="Tipo" />
-
-                    <DatePicker x:Name="dtp_DataInicio"
-                            Header="Data de Início"
-                            Date="{Binding DataHoraInicio}" />
-
-                    <TimePicker x:Name="tp_HoraInicio"
-                            Header="Hora de Início"
-                            Time="{Binding DataHoraInicio}" />
+                    <ComboBox x:Name="cbx_Tipo" Header="Tipo" />
 
                     <TextBox x:Name="tbx_Dosagem"
-                         Header="Dosagem"
-                         Text="{Binding Dosagem}"
-                         InputScope="Number" />
+                             Header="Dosagem"
+                             InputScope="Number"
+                             Text="{Binding Dosagem}" />
 
-                    <ComboBox x:Name="cbx_Dose"
-                         Header="Dose" />
+                    <ComboBox x:Name="cbx_Dose" Header="Dose" />
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <DatePicker x:Name="dtp_DataInicio"
+                                    Grid.Column="0"
+                                    Margin="0,0,6,0"
+                                    Date="{Binding DataHoraInicio}"
+                                    Header="Data de Início" />
+
+                        <TimePicker x:Name="tp_HoraInicio"
+                                    Grid.Column="1"
+                                    Header="Hora de Início"
+                                    Time="{Binding DataHoraInicio}" />
+                    </Grid>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <DatePicker x:Name="dtp_DataProximo"
+                                    Grid.Column="0"
+                                    Margin="0,0,6,0"
+                                    Date="{Binding DataHoraProxima}"
+                                    Header="Próxima Data" />
+
+                        <TimePicker x:Name="tp_HoraProximo"
+                                    Grid.Column="1"
+                                    Header="Próxima Hora"
+                                    Time="{Binding DataHoraProxima}" />
+                    </Grid>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <DatePicker x:Name="dtp_DataTermino"
+                                    Grid.Column="0"
+                                    Margin="0,0,6,0"
+                                    Date="{Binding DataHoraTermino}"
+                                    Header="Data de Término" />
+
+                        <TimePicker x:Name="tp_HoraTermino"
+                                    Grid.Column="1"
+                                    Header="Hora de Término"
+                                    Time="{Binding DataHoraTermino}" />
+                    </Grid>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <DatePicker x:Name="dtp_DataUsado"
+                                    Grid.Column="0"
+                                    Margin="0,0,6,0"
+                                    Date="{Binding DataHoraUsado}"
+                                    Header="Data de Uso" />
+
+                        <TimePicker x:Name="tp_HoraUsado"
+                                    Grid.Column="1"
+                                    Header="Hora de Uso"
+                                    Time="{Binding DataHoraUsado}" />
+                    </Grid>
 
                     <TextBox x:Name="tbx_Observacao"
-                         TextWrapping="Wrap"
-                         AcceptsReturn="True"
-                         Header="Observações"
-                         Height="200"
-                         PlaceholderText="ex. Quebrar comprimido na metade; Somente com água"/>
+                             Height="200"
+                             AcceptsReturn="True"
+                             Header="Observações"
+                             PlaceholderText="ex. Quebrar comprimido na metade;\nSomente com água\nSomente em jejum"
+                             Text="{Binding Observacao}"
+                             TextWrapping="Wrap" />
 
                 </StackPanel>
             </ScrollViewer>
         </Grid>
         <StackPanel Grid.Row="2"
-                    Orientation="Horizontal"
-                    HorizontalAlignment="Center">
+                    HorizontalAlignment="Center"
+                    Orientation="Horizontal">
             <AppBarButton x:Name="btn_Save"
-                      Icon="Save"
-                      Label="Salvar Medicamento" Click="btn_Save_Click"></AppBarButton>
+                          Click="btn_Save_Click"
+                          Icon="Save"
+                          Label="Salvar Medicamento" />
             <AppBarButton x:Name="btn_Cancel"
-                      Icon="Undo"
-                      Label="Cancelar"></AppBarButton>
+                          Click="btn_Cancel_Click"
+                          Icon="Undo"
+                          Label="Cancelar" />
             <AppBarButton x:Name="btn_Delete"
-                      Icon="Delete"
-                      Label="Deletar Medicamento" Click="btn_Delete_Click"></AppBarButton>
+                          Click="btn_Delete_Click"
+                          Icon="Delete"
+                          Label="Deletar Medicamento" />
         </StackPanel>
     </Grid>
 </Page>

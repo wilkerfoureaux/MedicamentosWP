@@ -17,8 +17,8 @@ namespace MedicamentosWP.Models
         public double Dosagem { get; set; }
         // public double Posologia { get; set; }
         public DateTime DataHoraInicio { get; set; }
-        public DateTime DataHoraTermino { get; set; }
         public DateTime DataHoraUsado { get; set; }
+        public DateTime DataHoraTermino { get; set; }
         public DateTime DataHoraProxima { get; set; }
         public string Observacao { get; set; }
 
