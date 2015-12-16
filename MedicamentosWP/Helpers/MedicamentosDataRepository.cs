@@ -29,7 +29,6 @@ namespace MedicamentosWP.Helpers
                 db.CreateTable<Medicamento>();
 
                 Load();
-
             }
         }
 
@@ -44,6 +43,19 @@ namespace MedicamentosWP.Helpers
         }
 
         public async Task<ObservableCollection<Medicamento>> Load()
+        {
+            // throw new NotImplementedException();
+
+            var asyncConnection = new SQLiteAsyncConnection(_dbPath);
+
+            _medicamentos = new ObservableCollection<Medicamento>(
+                await asyncConnection.QueryAsync<Medicamento>(
+                    "select * from Medicamento where DataHoraTermino > '" + DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss") + "' order by DataHoraProxima"
+                    ));
+            return _medicamentos;
+        }
+
+        public async Task<ObservableCollection<Medicamento>> LoadAll()
         {
             // throw new NotImplementedException();
 

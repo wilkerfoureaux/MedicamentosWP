@@ -37,7 +37,7 @@ namespace MedicamentosWP.Views
         {
             this.InitializeComponent();
 
-            _medicamentosVM = new MedicamentosVM(_data);
+            //_medicamentosVM = new MedicamentosVM(_data);
 
             DosesVM dosesVM = new DosesVM();
 
@@ -113,6 +113,7 @@ namespace MedicamentosWP.Views
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             this.navigationHelper.OnNavigatedTo(e);
+            _medicamentosVM = (MedicamentosVM)e.Parameter;
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
@@ -124,13 +125,12 @@ namespace MedicamentosWP.Views
 
         private void btn_Save_Click(object sender, RoutedEventArgs e)
         {
-            Medicamento medicamento = new Medicamento
-            {
-                Nome = tbx_Nome.Text,
-                DataHoraInicio = dtp_DataInicio.Date.Date.Add(dtp_HoraInicio.Time),
-                Dosagem = Double.Parse(tbx_Dosagem.Text),
-                Dose = cbx_Dose.SelectedIndex
-            };
+            Medicamento medicamento = new Medicamento(
+                tbx_Nome.Text,
+                dtp_DataInicio.Date.Date.Add(dtp_HoraInicio.Time),
+                Double.Parse(tbx_Dosagem.Text),
+                cbx_Dose.SelectedIndex
+            );
 
             _medicamentosVM.AddMedicamento(medicamento);
 

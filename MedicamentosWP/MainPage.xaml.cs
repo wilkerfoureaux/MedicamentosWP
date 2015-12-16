@@ -61,7 +61,7 @@ namespace MedicamentosWP
 
         private void btn_Add_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(Add_Medicamento));
+            Frame.Navigate(typeof(Add_Medicamento), _medicamentosVM);
         }
 
         private void btn_Update_Click(object sender, RoutedEventArgs e)
